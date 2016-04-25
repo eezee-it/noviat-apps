@@ -1,0 +1,51 @@
+variables:
+  PYTHON_EXE: "/usr/local/lib/python2.7.10/bin/python"
+  ODOO_SRC: "/home/gitlab-runner/odoo_src"
+  PROJECT_MODULES: "project_details_view"
+  ODOO_VERSION: "9.0"
+  ADDONS_PATH: "./env/enterprise/,./env/community/addons/,./project/"
+
+stages:
+  - check
+  - build
+  - cleanup
+
+flake8:
+  tags:
+    - flake8
+  stage: check
+  script:
+  - flake8 --config=.flakerc .
+
+tests:
+  tags:
+    - odoo
+  stage: build
+  script:
+  - dropdb --if-exists $CI_BUILD_REF
+  - git submodule init && git submodule update
+  - git --git-dir=$ODOO_SRC/odoo.git fetch origin *:*
+  - git --git-dir=$ODOO_SRC/enterprise.git fetch origin *:*
+  - virtualenv --python=$PYTHON_EXE env
+  - source env/bin/activate
+  - python -V
+  - pip install -q coverage==4.0.3
+  - git clone --quiet --branch=$ODOO_VERSION $ODOO_SRC/odoo.git env/community
+  - rm -rf env/community/.git
+  - pip install -q -r env/community/requirements.txt
+  - git clone --quiet --branch=$ODOO_VERSION $ODOO_SRC/enterprise.git env/enterprise
+  - rm -rf env/enterprise/.git
+  - createdb --encoding=UTF8 --locale=en_US.UTF-8 --template=template0 -D ramdisk $CI_BUILD_REF
+  - ./env/community/openerp-server -d $CI_BUILD_REF --addons-path=$ADDONS_PATH -i $PROJECT_MODULES --log-level=warn --stop-after-init
+  - coverage run ./env/community/openerp-server -d $CI_BUILD_REF --addons-path=$ADDONS_PATH -i $PROJECT_MODULES --test-enable --log-level=warn --stop-after-init
+  - coverage html
+  - coverage report -i
+  - grep pc_cov htmlcov/index.html | egrep -o "[0-9]+\%" | awk '{ print "covered " $1;}'
+  - dropdb --if-exists $CI_BUILD_REF
+
+
+cleanup_job:
+  stage: cleanup
+  script:
+  - dropdb --if-exists $CI_BUILD_REF
+  when: on_failure
