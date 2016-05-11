@@ -3,7 +3,7 @@ variables:
   ODOO_SRC: "/home/gitlab-runner/odoo_src"
   PROJECT_MODULES: "project_details_view,pos_order_totals_payments"
   ODOO_VERSION: "9.0"
-  ADDONS_PATH: "./env/enterprise/,./env/community/addons/,./project/,./pos"
+  ADDONS_PATH: "./env/enterprise/,./env/community/addons/,./project/,./pos/"
 
 stages:
   - check
