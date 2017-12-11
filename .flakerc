@@ -4,4 +4,4 @@
 ignore = E123,E133,E226,E241,E242,F811
 max-line-length = 79
 exclude = env,.git,env/odoo,__init__.py,script
-max-complexity = 10
+max-complexity = 11
