@@ -57,13 +57,13 @@ This boolean can be filled from the partner tag
 
 # Mass Mailing
 
-## - mailing_list_mass_selection
+## Mailing List: Mass-Selection - mailing_list_mass_selection
 
-## - mass_mailing_base
+## E-mailing base - mass_mailing_base
 
-## - mass_mailing_event
+## Mass mailing event - mass_mailing_event
 
-## - mass_mailing_preference_center
+## Preference center - mass_mailing_preference_center
 
 # Project
 
