@@ -51,7 +51,19 @@ This boolean can be filled from the partner tag
 
 # Event
 
+## Event mass registration - event_mass_registration
+
+## Event email filter - event_registration_mail_filter
+
 # Mass Mailing
+
+## - mailing_list_mass_selection
+
+## - mass_mailing_base
+
+## - mass_mailing_event
+
+## - mass_mailing_preference_center
 
 # Project
 
