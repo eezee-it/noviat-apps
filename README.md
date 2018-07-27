@@ -28,6 +28,11 @@ Point of Attention:
 
 - Work only for purchase taxe, normally should work for sales too but it was never tested
 
+## Account Refund Reason - account_refund_reason
+
+Allow you to configure the reason of a refund.
+This reason will be selected in the refund popup instead of a free text.
+
 ## Refund Invoice Journal - refund_invoice_journal
 
 Allow you to select a specifi journal when you make refund.
