@@ -56,9 +56,23 @@ This boolean can be filled from the partner tag
 
 # Event
 
+## Event Settings - event_config_settings
+
+Add a check box in settings to allow you to active tags in EPL inscriptions:
+
+- Show sub-menu Event Tags under configuration.
+- Show tags in attendees view form.
+
 ## Event mass registration - event_mass_registration
 
 ## Event email filter - event_registration_mail_filter
+
+## Event Tags - event_registration_tags
+
+Allow you to add new categories tags:
+
+- Add sub-menu Event Tags under configuration.
+- Add tags in attendees view form.
 
 # Mass Mailing
 
