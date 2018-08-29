@@ -589,7 +589,10 @@ class AccountMoveLineImport(models.TransientModel):
                 #print ("type", type(line[hf]))
                 try:
                     if hf in line.keys():
-                        line[hf] = line[hf].encode(self.codepage).strip()
+                        if isinstance(line[hf], str):
+                            line[hf] = line[hf].encode(self.codepage).strip()
+                        else:
+                            line[hf] = line[hf].decode(self.codepage).strip()
                 except:
                     tb = ''.join(format_exception(*exc_info()))
                     print ("error", line)
@@ -600,22 +603,25 @@ class AccountMoveLineImport(models.TransientModel):
                         % (line, tb))
 
             # step 2: process input fields
+            self._field_methods = self._input_fields()
             for i, hf in enumerate(header):
-                if i == 0 and line[hf] and line[hf][0] == '#':
-                    # lines starting with # are considered as comment lines
-                    break
-                if hf in self._skip_fields:
-                    continue
-                if line[hf] == '':
-                    continue
-
-                if self._field_methods[hf].get('orm_field'):
-                    self._field_methods[hf]['method'](
-                        hf, line, move, aml_vals,
-                        orm_field=self._field_methods[hf]['orm_field'])
-                else:
-                    self._field_methods[hf]['method'](
-                        hf, line, move, aml_vals)
+                if hf in line.keys():
+                    if i == 0 and line[hf] and line[hf][0] == '#':
+                        # lines starting with # are considered as comment lines
+                        break
+                    if hf in self._skip_fields:
+                        continue
+                    if line[hf] == '':
+                        continue
+                    print ("orm", self._field_methods.keys())
+                    if hf in self._field_methods.keys():
+                        if self._field_methods[hf].get('orm_field'):
+                            self._field_methods[hf]['method'](
+                                hf, line, move, aml_vals,
+                                orm_field=self._field_methods[hf]['orm_field'])
+                        else:
+                            self._field_methods[hf]['method'](
+                                hf, line, move, aml_vals)
 
             if aml_vals:
                 self._process_line_vals(line, move, aml_vals)
