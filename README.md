@@ -102,6 +102,12 @@ This field is filled/updated when the write date of the partner is update
 
 Allow you to have the IP of the person that join your odoo
 
+## Automatic update analytic account in invoices force_update_analytic_invoice
+
+Force the change of the analytic account after confirmation of the invoice.
+wizard allows you to modify the analytical accounts of the invoice if it is
+validated
+
 # Web
 
 # Website
