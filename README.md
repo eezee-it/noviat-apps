@@ -113,3 +113,43 @@ validated
 # Website
 
 ## Portal Form - portal_form
+
+## Quality assurance
+
+### Invoke
+
+To easily check you code you can use the "inv" command.
+
+#### Install assurance quality tools
+
+```bash
+# phantomjs on Mac
+brew install phantomjs
+
+# Pip package
+pip install -r requirements-dev.txt
+```
+
+#### See the commands availables
+
+```bash
+inv list
+```
+
+#### Launch linters
+
+```bash
+inv lint-flake8
+inv lint-odoo-lint
+inv lint-xml
+```
+
+#### Launch unittests
+
+```bash
+inv unittest
+inv unittest --addons=emailing_base,token_mixin
+# first time clean-before prepare a test database for testing
+inv unittest --addons=emailing_base,token_mixin --clean-before
+inv unittest --addons=emailing_base,token_mixin --clean-before --with-coverage
+```
