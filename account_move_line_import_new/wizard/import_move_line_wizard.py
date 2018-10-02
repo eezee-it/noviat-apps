@@ -6,10 +6,8 @@
 #    import cStringIO as StringIO
 #except ImportError:
 #    import StringIO
-try:
-    from StringIO import StringIO
-except ImportError:
-    from io import StringIO
+#from io import StringIO
+import io
 import base64
 import csv
 import time
@@ -56,16 +54,20 @@ class AccountMoveLineImport(models.TransientModel):
     @api.depends('aml_data')
     def _compute_lines(self):
         if self.aml_data:
-            codepage = self.codepage or self._default_codepage()
             aml_data = self.aml_data
+            #print ("aml_data", self.aml_data)
+            #print ("t", type(self.aml_data))
             if isinstance(aml_data, str):
-                # convert str to bytes
-                aml_data = aml_data.encode(codepage)
-            # decode bytes in b64 on a readable str
-            lines = base64.b64decode(aml_data).decode(codepage)
+                #print ("if")
+                lines = aml_data
+            else:
+                lines = base64.decodestring(aml_data)
+                #print ("else", lines)
+                lines = lines.decode("utf-8")
             # convert windows & mac line endings to unix style
-            lines = lines.replace('\r\n', '\n').replace('\r', '\n')
-            self.lines = lines
+            #print ("tt", type(lines))
+            #print ("lines", lines)
+            self.lines = lines.replace('\r\n', '\n').replace('\r', '\n')
 
     @api.one
     @api.depends('lines', 'csv_separator')
@@ -100,17 +102,35 @@ class AccountMoveLineImport(models.TransientModel):
 
     def _remove_leading_lines(self, lines):
         """ remove leading blank or comment lines """
-        input = StringIO(lines)
+        #print ("lines", lines)
+        input = io.StringIO(lines).read().split("\n")
+        output = ""
+        #tmp = input.read()
+        #print ("input", input)
         header = False
         for ln in input:
-            if ln and ln[0] not in [self.csv_separator, '#']:
+            #print ("i", ln)
+            if header:
+                if ln and ln[0] != '#':
+                    output += ln + "\n"
+                else:
+                    continue
+            else:
                 header = ln.lower()
-                break
 
+        #header = False
+        #ln = input
+        #while not header:
+         #   print ("ln", ln)
+        #    if not ln or ln and ln[0] in [self.csv_separator, '#']:
+        #        continue
+        #    else:
+        #        header = ln.lower()
         if not header:
             raise UserError(
                 _("No header line found in the input file !"))
-        output = input.read()
+        #output = input
+        #print ("o", output)
         return output, header
 
     def _input_fields(self):
@@ -148,21 +168,19 @@ class AccountMoveLineImport(models.TransientModel):
         self._field_methods = self._input_fields()
         self._skip_fields = []
 
-        print ("header_fields", header_fields)
-        print ("l", list(header_fields)[0])
-        tmp = list(header_fields)[0]
+        # header fields after blank column are considered as comments
+        header_fields = header_fields.split(self.csv_separator)
         column_cnt = 0
-        for cnt in range(len(tmp)):
-            print ("cnt", cnt)
-            if list(header_fields)[0][cnt] == '':
+
+        #print ("header_fields", header_fields)
+        for cnt in range(len(header_fields)):
+            if header_fields[cnt] == '':
                 column_cnt = cnt
                 break
-            elif cnt == len(list(header_fields)[0]) - 1:
+            elif cnt == len(header_fields) - 1:
                 column_cnt = cnt + 1
                 break
-        print("after")
-        header_fields = list(header_fields)[0][:column_cnt]
-        print("after", header_fields)
+        header_fields = header_fields[:column_cnt]
 
         # check for duplicate header fields
         header_fields2 = []
@@ -215,14 +233,19 @@ class AccountMoveLineImport(models.TransientModel):
                       "is not supported"),
                     self._name, hf, field_type)
                 self._skip_fields.append(hf)
+        res = ""
+        for f in header_fields:
+            print ("f", f)
+            res += f + self.csv_separator
+        res += "\n"
+        header_fields = res
+        print ("header_fields", header_fields)
 
         return header_fields
 
     def _log_line_error(self, line, msg):
-        data = self.csv_separator.join(
-            [line[hf] for hf in self._header_fields])
         self._err_log += _(
-            "Error when processing line '%s'") % data + ':\n' + msg + '\n\n'
+            "Error when processing line '%s'") % line + ':\n' + msg + '\n\n'
 
     def _handle_orm_char(self, field, line, move, aml_vals,
                          orm_field=False):
@@ -331,6 +354,10 @@ class AccountMoveLineImport(models.TransientModel):
                 dom_name = dom + [('name', '=', input)]
                 partners = part_mod.search(dom_name)
             if not partners:
+                #print ("a", aml_vals)
+                #print ("l", line)
+                #print ("f", field)
+                #print ("line[field]", line[field])
                 msg = _("Partner '%s' not found !") % input
                 self._log_line_error(line, msg)
                 return
@@ -503,6 +530,22 @@ class AccountMoveLineImport(models.TransientModel):
             ) % (self._sum_debit, self._sum_credit) + '\n'
         return vals
 
+    def create_dict(self, header, lines):
+        res = []
+        #header = header.split(self.csv_separator)
+        lines = lines.split("\n")
+        lh = len(header) - 1
+        for l in lines:
+            l = l.split(self.csv_separator)
+            ll = len(l)
+            d = {}
+            i = 0
+            while i < lh and i < ll:
+                d[header[i]] = l[i]
+                i += 1
+                res.append(d)
+        return res
+
     @api.multi
     def aml_import(self):
 
@@ -518,47 +561,71 @@ class AccountMoveLineImport(models.TransientModel):
         self._sum_debit = self._sum_credit = 0.0
         self._get_orm_fields()
         lines, header = self._remove_leading_lines(self.lines)
-        header_fields = csv.reader(
-            StringIO(header), dialect=self.dialect)
-        print("header_fields", header_fields)
-        self._header_fields = self._process_header(header_fields)
-        reader = csv.DictReader(
-            StringIO(lines), fieldnames=self._header_fields,
-            dialect=self.dialect)
+        print ("header", header)
+        print ("lines", lines)
 
+        #header_fields = csv.reader(
+        #    io.StringIO(header), dialect=self.dialect)
+        header_fields = header
+        self._header_fields = self._process_header(header_fields)
+        #reader = csv.DictReader(
+        #    io.StringIO(lines), fieldnames=self._header_fields,
+        #    dialect=self.dialect)
+        #full = self._header_fields + lines
+        #print ("f", full)
+        #full = bytearray(full, self.codepage)
+        #print ("ff", full)
+        header = header.split(self.csv_separator)
+        reader = self.create_dict(header, lines)
+
+        #reader = csv.DictReader(full, dialect=self.dialect)
+
+        #print ("r", reader)
         move_lines = []
         for line in reader:
-
+            print ("l", line)
             aml_vals = {}
 
             # step 1: handle codepage
-            for i, hf in enumerate(self._header_fields):
+            for i, hf in enumerate(header):
+                #print ("i", i)
+                #print ("hf", hf)
+                #print ("type", type(line[hf]))
                 try:
-                    line[hf] = line[hf].decode(self.codepage).strip()
+                    if hf in line.keys():
+                        if isinstance(line[hf], str):
+                            line[hf] = line[hf].encode(self.codepage).strip()
+                        else:
+                            line[hf] = line[hf].decode(self.codepage).strip()
                 except:
                     tb = ''.join(format_exception(*exc_info()))
+                    #print ("error", line)
+                    #print ("tb", tb)
                     raise UserError(
                         _("Wrong Code Page"),
                         _("Error while processing line '%s' :\n%s")
                         % (line, tb))
 
             # step 2: process input fields
-            for i, hf in enumerate(self._header_fields):
-                if i == 0 and line[hf] and line[hf][0] == '#':
-                    # lines starting with # are considered as comment lines
-                    break
-                if hf in self._skip_fields:
-                    continue
-                if line[hf] == '':
-                    continue
-
-                if self._field_methods[hf].get('orm_field'):
-                    self._field_methods[hf]['method'](
-                        hf, line, move, aml_vals,
-                        orm_field=self._field_methods[hf]['orm_field'])
-                else:
-                    self._field_methods[hf]['method'](
-                        hf, line, move, aml_vals)
+            self._field_methods = self._input_fields()
+            for i, hf in enumerate(header):
+                if hf in line.keys():
+                    if i == 0 and line[hf] and line[hf][0] == '#':
+                        # lines starting with # are considered as comment lines
+                        break
+                    if hf in self._skip_fields:
+                        continue
+                    if line[hf] == '':
+                        continue
+                    #print ("orm", self._field_methods.keys())
+                    if hf in self._field_methods.keys():
+                        if self._field_methods[hf].get('orm_field'):
+                            self._field_methods[hf]['method'](
+                                hf, line, move, aml_vals,
+                                orm_field=self._field_methods[hf]['orm_field'])
+                        else:
+                            self._field_methods[hf]['method'](
+                                hf, line, move, aml_vals)
 
             if aml_vals:
                 self._process_line_vals(line, move, aml_vals)
