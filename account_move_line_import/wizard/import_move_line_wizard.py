@@ -14,8 +14,6 @@ import base64
 import csv
 import time
 from datetime import datetime
-from sys import exc_info
-from traceback import format_exception
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
@@ -62,9 +60,17 @@ class AccountMoveLineImport(models.TransientModel):
                 # convert str to bytes
                 aml_data = aml_data.encode(codepage)
             # decode bytes in b64 on a readable str
-            lines = base64.b64decode(aml_data).decode(codepage)
+            try:
+                lines = base64.b64decode(aml_data).decode(codepage)
+            except:
+                raise UserError(
+                    _("Wrong Code Page: \n"
+                      "Error during reading file, please try with another "
+                      "code page\n")
+                )
             # convert windows & mac line endings to unix style
-            lines = lines.replace('\r\n', '\n').replace('\r', '\n')
+            lines = lines.replace('\r\n', '\n').replace('\r', '\n')\
+                .replace('\0', ' ')
             self.lines = lines
 
     @api.one
@@ -158,7 +164,6 @@ class AccountMoveLineImport(models.TransientModel):
                 column_cnt = cnt + 1
                 break
         header_fields = tmp[0][:column_cnt]
-        print("after", header_fields)
 
         # check for duplicate header fields
         header_fields2 = []
@@ -530,7 +535,7 @@ class AccountMoveLineImport(models.TransientModel):
                 try:
                     line[hf] = line[hf].strip()
                 except:
-                    tb = ''.join(format_exception(*exc_info()))
+                    # tb = ''.join(format_exception(*exc_info()))
                     raise UserError(
                         _("Wrong Code Page"),
                         _("Error while processing line '%s' :\n")
