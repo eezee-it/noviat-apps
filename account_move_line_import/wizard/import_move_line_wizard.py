@@ -148,20 +148,16 @@ class AccountMoveLineImport(models.TransientModel):
         self._field_methods = self._input_fields()
         self._skip_fields = []
 
-        print ("header_fields", header_fields)
-        print ("l", list(header_fields)[0])
-        tmp = list(header_fields)[0]
+        tmp = list(header_fields)
         column_cnt = 0
-        for cnt in range(len(tmp)):
-            print ("cnt", cnt)
-            if list(header_fields)[0][cnt] == '':
+        for cnt in range(len(tmp[0])):
+            if tmp[0][cnt] == '':
                 column_cnt = cnt
                 break
-            elif cnt == len(list(header_fields)[0]) - 1:
+            elif cnt == len(tmp[0]) - 1:
                 column_cnt = cnt + 1
                 break
-        print("after")
-        header_fields = list(header_fields)[0][:column_cnt]
+        header_fields = tmp[0][:column_cnt]
         print("after", header_fields)
 
         # check for duplicate header fields
@@ -520,7 +516,6 @@ class AccountMoveLineImport(models.TransientModel):
         lines, header = self._remove_leading_lines(self.lines)
         header_fields = csv.reader(
             StringIO(header), dialect=self.dialect)
-        print("header_fields", header_fields)
         self._header_fields = self._process_header(header_fields)
         reader = csv.DictReader(
             StringIO(lines), fieldnames=self._header_fields,
@@ -528,19 +523,18 @@ class AccountMoveLineImport(models.TransientModel):
 
         move_lines = []
         for line in reader:
-
             aml_vals = {}
 
             # step 1: handle codepage
             for i, hf in enumerate(self._header_fields):
                 try:
-                    line[hf] = line[hf].decode(self.codepage).strip()
+                    line[hf] = line[hf].strip()
                 except:
                     tb = ''.join(format_exception(*exc_info()))
                     raise UserError(
                         _("Wrong Code Page"),
-                        _("Error while processing line '%s' :\n%s")
-                        % (line, tb))
+                        _("Error while processing line '%s' :\n")
+                        % line)
 
             # step 2: process input fields
             for i, hf in enumerate(self._header_fields):
