@@ -68,7 +68,7 @@ class AccountMoveLineImport(models.TransientModel):
                       "Error during reading file, please try with another "
                       "code page\n")
                 )
-            # convert windows & mac line endings to unix style
+            # convert windows & mac line endings to unix style & Null bytes
             lines = lines.replace('\r\n', '\n').replace('\r', '\n')\
                 .replace('\0', ' ')
             self.lines = lines
@@ -164,7 +164,6 @@ class AccountMoveLineImport(models.TransientModel):
                 column_cnt = cnt + 1
                 break
         header_fields = tmp[0][:column_cnt]
-
         # check for duplicate header fields
         header_fields2 = []
         for hf in header_fields:
@@ -506,7 +505,6 @@ class AccountMoveLineImport(models.TransientModel):
 
     @api.multi
     def aml_import(self):
-
         time_start = time.time()
         self._err_log = ''
         move = self.env['account.move'].browse(
@@ -525,11 +523,9 @@ class AccountMoveLineImport(models.TransientModel):
         reader = csv.DictReader(
             StringIO(lines), fieldnames=self._header_fields,
             dialect=self.dialect)
-
         move_lines = []
         for line in reader:
             aml_vals = {}
-
             # step 1: handle codepage
             for i, hf in enumerate(self._header_fields):
                 try:
@@ -540,7 +536,6 @@ class AccountMoveLineImport(models.TransientModel):
                         _("Wrong Code Page"),
                         _("Error while processing line '%s' :\n")
                         % line)
-
             # step 2: process input fields
             for i, hf in enumerate(self._header_fields):
                 if i == 0 and line[hf] and line[hf][0] == '#':
@@ -562,7 +557,6 @@ class AccountMoveLineImport(models.TransientModel):
             if aml_vals:
                 self._process_line_vals(line, move, aml_vals)
                 move_lines.append(aml_vals)
-
         vals = [(0, 0, l) for l in move_lines]
         vals = self._process_vals(move, vals)
 
