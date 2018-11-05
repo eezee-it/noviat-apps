@@ -110,6 +110,11 @@ validated
 
 # Web
 
+## Dynamic Column Listview Stock - dynamic_column_listview_stock
+
+In V11, due to Odoo code change, the dynamic column list view can generate error if you have stock installed
+So develop this module, to avoid this bug
+
 # Website
 
 ## Portal Form - portal_form
