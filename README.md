@@ -14,6 +14,11 @@ Use this logic
 
 # Account
 
+## Invoice cancel date - account_invoice_cancel_date
+
+When you cancel an invoice than put it in draft, the accounting date was erase.
+We avoid this behaviour
+
 ## Accounting Prorata Taxes - account_prorata_taxes
 
 Add a wizard to allow you to create pro rata taxes.
