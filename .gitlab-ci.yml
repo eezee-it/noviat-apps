@@ -2,10 +2,10 @@ variables:
   PYTHON_EXE: "/usr/bin/python3.5"
   ODOO_SRC: "/home/gitlab-runner/odoo_src"
 
-  PROJECT_MODULES: "only_postal,partner_token,whats_my_ip,mass_mailing_base,refund_invoice_journal,account_prorata_taxes,project_details_view,force_update_analytic_invoice,token_mixin,event_registration_tags,website_noindex,website_event_deadline,website_event_images,website_multi_event,event_mass_registration,event_registration_mail_filter,multi_mail_address,mass_mailing_event_extended,crm_account_manager,event_website_quote,account_website_quote,event_registration_bulk_confirmation,website_sale_automatic_send_invoice_email,web_email_queue_limit,website_event_details,website_event_email_details,website_new_page_templates"
+  PROJECT_MODULES: ""
 
   ODOO_VERSION: "12.0"
-  ADDONS_PATH: "./env/enterprise/,./env/community/addons/,./account,./crm,./mass_mailing,./tools,./env/noviat_apps,./env/oca_social_apps,./event,./web,./project,./website"
+  ADDONS_PATH: "./env/enterprise/,./env/community/addons/"
   
 
 
