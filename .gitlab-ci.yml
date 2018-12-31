@@ -1,51 +1,72 @@
 variables:
-  PYTHON_EXE: "/usr/local/lib/python2.7.10/bin/python"
+  PYTHON_EXE: "/usr/bin/python3.5"
   ODOO_SRC: "/home/gitlab-runner/odoo_src"
-  PROJECT_MODULES: "project_details_view,pos_order_totals_payments"
-  ODOO_VERSION: "9.0"
-  ADDONS_PATH: "./env/enterprise/,./env/community/addons/,./project/,./pos/"
+
+  PROJECT_MODULES: "only_postal,partner_token,whats_my_ip,mass_mailing_base,refund_invoice_journal,account_prorata_taxes,project_details_view,force_update_analytic_invoice,token_mixin,event_registration_tags,website_noindex,website_event_deadline,website_event_images,website_multi_event,event_mass_registration,event_registration_mail_filter,multi_mail_address,mass_mailing_event_extended,crm_account_manager,event_website_quote,account_website_quote,event_registration_bulk_confirmation,website_sale_automatic_send_invoice_email,web_email_queue_limit,website_event_details,website_event_email_details,website_new_page_templates"
+
+  ODOO_VERSION: "12.0"
+  ADDONS_PATH: "./env/enterprise/,./env/community/addons/,./account,./crm,./mass_mailing,./tools,./env/noviat_apps,./env/oca_social_apps,./event,./web,./project,./website"
+  
+
 
 stages:
-  - check
-  - build
+  - lint
+  - unittest
   - cleanup
 
 flake8:
   tags:
     - flake8
-  stage: check
+  stage: lint
+  except:
+    - tags
   script:
   - flake8 --config=.flakerc .
-
+  retry: 2
+  
 tests:
   tags:
+    - eezeeit
     - odoo
-  stage: build
+  stage: unittest
+  except:
+    - tags
+  artifacts:
+    paths:
+    - htmlcov/
   script:
-  - dropdb --if-exists $CI_BUILD_REF
+  # Use short commit hash as database name
+  - DBNAME=$(git rev-parse --short HEAD)
+  - dropdb --if-exists $DBNAME
   - git submodule init && git submodule update
   - git --git-dir=$ODOO_SRC/odoo.git fetch origin *:*
   - git --git-dir=$ODOO_SRC/enterprise.git fetch origin *:*
   - virtualenv --python=$PYTHON_EXE env
   - source env/bin/activate
   - python -V
-  - pip install -q coverage==4.0.3
+  - pip3 install -q coverage==4.0.3
+  - pip3 install -q -r requirements.txt
   - git clone --quiet --branch=$ODOO_VERSION $ODOO_SRC/odoo.git env/community
   - rm -rf env/community/.git
-  - pip install -q -r env/community/requirements.txt
+  - pip3 install -q -r env/community/requirements.txt
   - git clone --quiet --branch=$ODOO_VERSION $ODOO_SRC/enterprise.git env/enterprise
   - rm -rf env/enterprise/.git
-  - createdb --encoding=UTF8 --locale=en_US.UTF-8 --template=template0 -D ramdisk $CI_BUILD_REF
-  - ./env/community/openerp-server -d $CI_BUILD_REF --addons-path=$ADDONS_PATH -i $PROJECT_MODULES --log-level=warn --stop-after-init
-  - coverage run ./env/community/openerp-server -d $CI_BUILD_REF --addons-path=$ADDONS_PATH -i $PROJECT_MODULES --test-enable --log-level=warn --stop-after-init
+  - createdb --encoding=UTF8 --locale=en_US.UTF-8 --template=template0 $DBNAME
+  - ./env/community/odoo-bin -d $DBNAME --addons-path=$ADDONS_PATH -i $PROJECT_MODULES --load-language=fr_BE,nl_BE --smtp=nosmtp --log-level=warn --stop-after-init
+  - coverage run ./env/community/odoo-bin -d $DBNAME --addons-path=$ADDONS_PATH -i $PROJECT_MODULES --test-enable --log-level=warn --stop-after-init --smtp=nosmtp
   - coverage html
   - coverage report -i
   - grep pc_cov htmlcov/index.html | egrep -o "[0-9]+\%" | awk '{ print "covered " $1;}'
-  - dropdb --if-exists $CI_BUILD_REF
-
+  - dropdb --if-exists $DBNAME
+  retry: 2
 
 cleanup_job:
+  tags:
+   - eezeeit
+   - odoo
   stage: cleanup
   script:
-  - dropdb --if-exists $CI_BUILD_REF
+  - DBNAME=$(git rev-parse --short HEAD)
+  - dropdb --if-exists $DBNAME
   when: on_failure
+  allow_failure: true
