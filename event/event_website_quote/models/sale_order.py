@@ -30,9 +30,11 @@ class SaleOrder(models.Model):
         if not self.sale_order_template_id:
             return
 
-        template = self.sale_order_template_id.with_context(lang=self.partner_id.lang)
+        template = self.sale_order_template_id.with_context(
+            lang=self.partner_id.lang)
 
-        for template_line in template.sale_order_template_line_ids.filtered('event_ok'):
+        for template_line in \
+                template.sale_order_template_line_ids.filtered('event_ok'):
             order_lines = self.order_line.filtered(
                     lambda r: r.product_id == template_line.product_id)
 
