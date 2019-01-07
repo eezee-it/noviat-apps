@@ -36,7 +36,7 @@ class SaleOrder(models.Model):
         for template_line in \
                 template.sale_order_template_line_ids.filtered('event_ok'):
             order_lines = self.order_line.filtered(
-                    lambda r: r.product_id == template_line.product_id)
+                lambda r: r.product_id == template_line.product_id)
 
             for order_line in order_lines:
                 if template_line.event_id.id:
