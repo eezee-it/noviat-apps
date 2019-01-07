@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.column_handle {
+    cursor: move;
+}
+
+.dragtable-sortable li {
+    background: #EFEFEF;
+}
+
+.column_handle {
+    margin-right: 10px;
+}
+
+.dynamic_column_dropdown .btn {
+    width: 100px;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_event_registration_form_inherit_question">
+        <field name="name">event.registration.form.inherit.question</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_event_registration_form" />
+        <field name="arch" type="xml">
+            <group name="event" position="inside">
+                <field name="free_text_answer_ids" readonly="1"/>
+            </group>
+        </field>
+    </record>
+</odoo>

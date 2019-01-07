@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="inherit_sale_order_template_view_form">
+        <field name="name">sale.order.template.form</field>
+        <field name="model">sale.order.template</field>
+        <field name="inherit_id" ref="sale_management.sale_order_template_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_order_template_line_ids']//tree" position="inside">
+                <field name="event_ok" invisible="1"/>
+                <field name="event_id" domain="[('event_ticket_ids.product_id','=', product_id)]" attrs="{'required': [('event_ok', '!=', False)]}"/>
+                <field name="event_ticket_id" domain="[('event_id', '=', event_id), ('product_id','=',product_id), '|', ('seats_availability', '=', 'unlimited'), ('seats_available', '>', 0)]" attrs="{'required': [('event_ok', '!=', False)]} "/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

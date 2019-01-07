@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_event_event_mass_form_inherit" model="ir.ui.view">
+        <field name="name">view.event.event.mass.form.inherit</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+            <button name="button_cancel" position="after">
+	            <button name="%(attendee_add_group_action)d" string="Mass pre-registration"
+	                                type="action"/>
+            </button>
+        </field>
+    </record>
+</odoo>

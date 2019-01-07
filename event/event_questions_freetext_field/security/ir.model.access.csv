@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+event_freetext_answer_all,event.answer.all,model_event_answer_freetext,,1,0,0,0
+event_freetext_answer_user,event.answer.event.user,model_event_answer_freetext,event.group_event_user,1,1,1,1

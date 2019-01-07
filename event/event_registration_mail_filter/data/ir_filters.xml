@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="filter_event_registration_draft" model="ir.filters">
+            <field name="name">Event registration: Unconfirmed</field>
+            <field name="model_id">event.registration</field>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="user_id" eval="False"/>
+        </record>
+        <record id="filter_event_registration_confirmed" model="ir.filters">
+            <field name="name">Event registration: Confirmed</field>
+            <field name="model_id">event.registration</field>
+            <field name="domain">[('state', '=', 'open')]</field>
+            <field name="user_id" eval="False"/>
+        </record>
+        <record id="filter_event_registration_attendeed" model="ir.filters">
+            <field name="name">Event registration: Attendeed</field>
+            <field name="model_id">event.registration</field>
+            <field name="domain">[('state', '=', 'done')]</field>
+            <field name="user_id" eval="False"/>
+        </record>
+        <record id="filter_event_registration_cancelled" model="ir.filters">
+            <field name="name">Event registration: Cancelled</field>
+            <field name="model_id">event.registration</field>
+            <field name="domain">[('state', '=', 'cancel')]</field>
+            <field name="user_id" eval="False"/>
+        </record>
+        <record id="filter_event_registration_refused" model="ir.filters">
+            <field name="name">Event registration: Refused</field>
+            <field name="model_id">event.registration</field>
+            <field name="domain">[('state', '=', 'refused')]</field>
+            <field name="user_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

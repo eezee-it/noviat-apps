@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.mail</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="web_config_settings.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='module_web_email_queue_limit']//div[hasclass('o_setting_right_pane')]" position="inside">
+                <div class="mt16">
+                    <label for="email_queue_limit"/>
+                    <field class="oe_inline" name="email_queue_limit" nolabel="1"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
