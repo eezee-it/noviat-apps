@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="attendee_add_group_view_form" model="ir.ui.view">
+            <field name="name">attendee.add.group.form</field>
+            <field name="model">attendee.add.group</field>
+            <field name="arch" type="xml">
+                <form string="Mass pre-registration">
+                    <group class="oe_title" colspan="4">
+                        <p>Click the following button to select and register contacts.</p>
+                    </group>
+                    <group class="oe_title" colspan="4">
+                            <field name="mailing_model_id" widget="selection"/>
+                            <field name="mailing_model_name" invisible="1"/>
+                            <field name="attendee_domain" widget="domain" options="{'model': 'res.partner', 'selectable': 1}" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_add_mass_pre_registration" string="Add pre-registrations" type="object" class="btn btn-sm btn-primary"/>
+                        <button string="Cancel" class="btn btn-sm btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="attendee_add_group_action" model="ir.actions.act_window">
+            <field name="name">Mass pre-registration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">attendee.add.group</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="attendee_add_group_view_form"/>
+            <field name="target">new</field>
+        </record>
+        
+        <record id="attendee_add_group_result_view_form" model="ir.ui.view">
+            <field name="name">attendee.add.group.result.form</field>
+            <field name="model">attendee.add.group</field>
+            <field name="arch" type="xml">
+                <form string="Result Notification">
+                    <div class="oe_title">
+                        <h3><field name="message_notification" readonly="1" nolabel="1" /></h3>
+                    </div>
+                    <footer>
+                        <button string="OK" class="btn btn-sm btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+ 
+
+</odoo>

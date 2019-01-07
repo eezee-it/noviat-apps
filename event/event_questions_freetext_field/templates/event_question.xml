@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="registration_attendee_details_questions" inherit_id="website_event_questions.registration_attendee_details_questions">
+        <data>
+            <!-- Attendee specific questions -->
+            <xpath expr="//t[@t-if='event.specific_question_ids']//div[hasclass( 'row')]" position="attributes">
+                <attribute name="t-if">question.question_type=='dropdown'</attribute>
+            </xpath>
+
+            <xpath expr="//t[@t-if='event.specific_question_ids']//div[hasclass('row')]" position="after">
+                <t t-if="question.question_type=='free_text'">
+                    <div class="row mb4">
+                        <span class="col-md-7 mt4 text-right"><t t-esc="question.title"/></span>
+                        <div class="col-md-5">
+                            <input t-attf-name="#{counter}-answer_free_text_value-#{question.id}" class="o_specific_answer" t-att-required="'true' if question.is_mandatory else False" />
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+
+            <!-- Generic questions -->
+            <xpath expr="//t[@t-if='event.general_question_ids']//div[hasclass('row')]" position="attributes">
+                <attribute name="t-if">question.question_type=='dropdown'</attribute>
+            </xpath>
+
+            <xpath expr="//t[@t-if='event.general_question_ids']//div[hasclass('row')]" position="after">
+                <t t-if="question.question_type=='free_text'">
+                    <div class="row mb4">
+                        <span class="col-md-7 mt4 text-right"><t t-esc="question.title"/></span>
+                        <div class="col-md-5">
+                            <input t-attf-name="0-answer_free_text_value-#{question.id}" class="o_general_answer" t-att-required="'true' if question.is_mandatory else False" />
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+        </data>
+    </template>
+
+</odoo>

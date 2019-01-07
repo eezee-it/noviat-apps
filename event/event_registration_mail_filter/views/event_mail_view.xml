@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_event_event_form" model="ir.ui.view">
+            <field name="name">view.event.event.form</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='event_mail_ids']/tree/field[@name='template_id']" position="after">
+                    <field name="filter_id" options="{'no_create': True}"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_event_mail_form_inherit" model="ir.ui.view">
+            <field name="name">view.event.mail.form.inherit</field>
+            <field name="model">event.mail</field>
+            <field name="inherit_id" ref="event.view_event_mail_form"/>
+            <field name="arch" type="xml">
+                <field name="event_id" position="after">
+                    <field name="filter_id"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="event_answer_freetext_tree_view">
+        <field name="name">event.answer.freetext</field>
+        <field name="model">event.answer.freetext</field>
+        <field name="arch" type="xml">
+            <tree >
+                <field name="question_id"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
