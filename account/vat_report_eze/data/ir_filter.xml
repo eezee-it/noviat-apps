@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="account_account_filter_eezee_000" model="ir.filters">
+            <field name="name">Belgium VAT : grid 00</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;',('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_000')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_001" model="ir.filters">
+            <field name="name">Belgium VAT : grid 01</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_001')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_002" model="ir.filters">
+            <field name="name">Belgium VAT : grid 02</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_002')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_003" model="ir.filters">
+            <field name="name">Belgium VAT : grid 03</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_003')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_004" model="ir.filters">
+            <field name="name">Belgium VAT : grid 44</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_004')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_005" model="ir.filters">
+            <field name="name">Belgium VAT : grid 45</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+        </record>
+        <record id="account_account_filter_eezee_006" model="ir.filters">
+            <field name="name">Belgium VAT : grid 46</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_007')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_007" model="ir.filters">
+            <field name="name">Belgium VAT : grid 46L</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_007')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_008" model="ir.filters">
+            <field name="name">Belgium VAT : grid 46T</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+        </record>
+        <record id="account_account_filter_eezee_009" model="ir.filters">
+            <field name="name">Belgium VAT : grid 47</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_009')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_010" model="ir.filters">
+            <field name="name">Belgium VAT : grid 48s44</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_010')]), ('debit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_011" model="ir.filters">
+            <field name="name">Belgium VAT : grid 48s46L</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+        </record>
+        <record id="account_account_filter_eezee_012" model="ir.filters">
+            <field name="name">Belgium VAT : grid 48s46T</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+        </record>
+        <record id="account_account_filter_eezee_013" model="ir.filters">
+            <field name="name">Belgium VAT : grid 49</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_013')]), ('debit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_014" model="ir.filters">
+            <field name="name">Belgium VAT : grid 54</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;',('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_014')]),  ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_015" model="ir.filters">
+            <field name="name">Belgium VAT : grid 55</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_015')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_016" model="ir.filters">
+            <field name="name">Belgium VAT : grid 56</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_016')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_017" model="ir.filters">
+            <field name="name">Belgium VAT : grid 57</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+        </record>
+        <record id="account_account_filter_eezee_018" model="ir.filters">
+            <field name="name">Belgium VAT : grid 59</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_018')]), ('debit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_019" model="ir.filters">
+            <field name="name">Belgium VAT : grid 61</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_019')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_020" model="ir.filters">
+            <field name="name">Belgium VAT : grid 62</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_020')]), ('debit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_021" model="ir.filters">
+            <field name="name">Belgium VAT : grid 63</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_021')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_022" model="ir.filters">
+            <field name="name">Belgium VAT : grid 64</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_022')]), ('debit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_023" model="ir.filters">
+            <field name="name">Belgium VAT : grid 81</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['|', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_023')]), ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_031')])]"/>
+        </record>
+        <record id="account_account_filter_eezee_024" model="ir.filters">
+            <field name="name">Belgium VAT : grid 82</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['|', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_024')]), ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_032')])]"/>
+        </record>
+        <record id="account_account_filter_eezee_025" model="ir.filters">
+            <field name="name">Belgium VAT : grid 83</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['|', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_025')]), ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_033')])]"/>
+        </record>
+        <record id="account_account_filter_eezee_026" model="ir.filters">
+            <field name="name">Belgium VAT : grid 84</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_026')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_027" model="ir.filters">
+            <field name="name">Belgium VAT : grid 85</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_027')]), ('credit', '>', 0)]"/>
+        </record>
+        <record id="account_account_filter_eezee_028" model="ir.filters">
+            <field name="name">Belgium VAT : grid 86</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_028')])]"/>
+        </record>
+        <record id="account_account_filter_eezee_029" model="ir.filters">
+            <field name="name">Belgium VAT : base in 87</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_029')])]"/>
+        </record>
+        <record id="account_account_filter_eezee_030" model="ir.filters">
+            <field name="name">Belgium VAT : grid 88</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_030')])]"/>
+        </record>
+        <record id="account_account_filter_eezee_031" model="ir.filters">
+            <field name="name">Belgium VAT : Tax not deductible (grid 81)</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['|', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_023')]), ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_031')])]"/>
+        </record>
+        <record id="account_account_filter_eezee_032" model="ir.filters">
+            <field name="name">Belgium VAT : Tax not deductible (grid 82)</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['|', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_024')]), ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_032')])]"/>
+        </record>
+        <record id="account_account_filter_eezee_033" model="ir.filters">
+            <field name="name">Belgium VAT : Tax not deductible (grid 83)</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+            <field name="domain" eval="['|', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_025')]), ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_033')])]"/>
+        </record>
+        <record id="account_account_filter_eezee_034" model="ir.filters">
+            <field name="name">Belgium VAT : Tax not deductible (grid 85)</field>
+            <field name="model_id">account.move.line</field>
+            <field name="active">True</field>
+            <field name="user_id"></field>
+        </record>
+
+    </data>
+</odoo>

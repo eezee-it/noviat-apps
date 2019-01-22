@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <delete id="l10n_be.1_attn_VAT-IN-V61" model="account.tax"/>
+        <delete id="l10n_be.1_attn_VAT-IN-V62" model="account.tax"/>
+
+        <record id="account_tax_eezee_001" model="account.tax">
+            <field name="name">eXportations hors EEC</field>
+            <field name="code">X</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">X</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_009'), ref('vat_report_eze.account_account_tag_eezee_013')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+        
+        <record id="account_tax_eezee_002" model="account.tax">
+            <field name="name">Prestations de Sous-Traitance 0%</field>
+            <field name="code">PST0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">PST0</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_003" model="account.tax">
+            <field name="name">Biens et Services divers Part. déduct. 50% - partie n.d.</field>
+            <field name="code">BSP21 50 - partie n.d.</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">10.5</field>
+            <field name="description">BSP21 50</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_032')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_004" model="account.tax">
+            <field name="name">eXtracommunautaire Marchandises</field>
+            <field name="code">XM</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">XM</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_005" model="account.tax">
+            <field name="name">eXtracommunautaire. Biens et Services</field>
+            <field name="code">XBS</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">XBS</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_006" model="account.tax">
+            <field name="name">eXtracommunautaire Investissement</field>
+            <field name="code">XI</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">XI</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_025'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_007" model="account.tax">
+            <field name="name">Marchandises déductibles 0%</field>
+            <field name="code">M0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">M0</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_008" model="account.tax">
+            <field name="name">Prestations de Sous-Traitance 12%</field>
+            <field name="code">PST12</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">12</field>
+            <field name="description">PST12</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021'), ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_009" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier - Autoliq.2</field>
+            <field name="code">STI Autoliq.2</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">-100</field>
+            <field name="description">STI</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_016'), ref('vat_report_eze.account_account_tag_eezee_020')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_010" model="account.tax">
+            <field name="name">Biens et Services divers déductibles 6%</field>
+            <field name="code">BS6</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">6</field>
+            <field name="description">BS6</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021'), ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_011" model="account.tax">
+            <field name="name">Biens et Services divers déductibles 12%</field>
+            <field name="code">BS12</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">12</field>
+            <field name="description">BS12</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021'), ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_012" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier 6% - Autoliq.2</field>
+            <field name="code">STI6 Autoliq.2</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">-6</field>
+            <field name="description">STI6</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_016'), ref('vat_report_eze.account_account_tag_eezee_020')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_014" model="account.tax">
+            <field name="name">Cocontractant immobilier déductible 0%</field>
+            <field name="code">C0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">C0</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027'), ref('vat_report_eze.account_account_tag_eezee_029')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_015" model="account.tax">
+            <field name="name">Cocontractant immobilier déductible 6% - Autoliq.1</field>
+            <field name="code">C6 Autoliq.1</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">6</field>
+            <field name="description">C6</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_019')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_017" model="account.tax">
+            <field name="name">Biens et Services divers Part. déduct. 75% - partie n.d.</field>
+            <field name="code">BSP21 75 - partie n.d.</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">5.25</field>
+            <field name="description">BSP21 75</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_032')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_019" model="account.tax">
+            <field name="name">Cocontractant immobilier déductible 6% - Autoliq.2</field>
+            <field name="code">C6 Autoliq.2</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">-6</field>
+            <field name="description">C6</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_016'), ref('vat_report_eze.account_account_tag_eezee_020')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_021" model="account.tax">
+            <field name="name">Marchandises déductibles 6%</field>
+            <field name="code">M6</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">6</field>
+            <field name="description">M6</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021'), ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_022" model="account.tax">
+            <field name="name">Marchandises déductibles 21%</field>
+            <field name="code">M21</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">21</field>
+            <field name="description">M21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_023" model="account.tax">
+            <field name="name">Marchandises déductibles 12%</field>
+            <field name="code">M12</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">12</field>
+            <field name="description">M12</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_024" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier 0%</field>
+            <field name="code">STI0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">STI0</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027'), ref('vat_report_eze.account_account_tag_eezee_029')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_026" model="account.tax">
+            <field name="name">Biens et Services divers déductibles 0%</field>
+            <field name="code">BS0</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">BS0</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_027" model="account.tax">
+            <field name="name">Biens et Services divers déductibles 21%</field>
+            <field name="code">BS21</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">21</field>
+            <field name="description">BS21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021'), ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_028" model="account.tax">
+            <field name="name">Biens et Services divers Part. déduct. 75% - partie déd.</field>
+            <field name="code">BSP21 75 - partie déd.</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">15.75</field>
+            <field name="description">BSP21 75</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_029" model="account.tax">
+            <field name="name">Marchandises déductibles</field>
+            <field name="code">M</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">100</field>
+            <field name="description">M</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021'), ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_030" model="account.tax">
+            <field name="name">Régularisation en faveur de l'état</field>
+            <field name="code">Régularisation en faveur de l'état</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">fixed</field>
+            <field name="amount">0</field>
+            <field name="description">Régularisation en faveur de l'état</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_019')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">True</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_031" model="account.tax">
+            <field name="name">Régularisation en faveur du déclarant</field>
+            <field name="code">Régularisation en faveur du déclarant</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">fixed</field>
+            <field name="amount">0</field>
+            <field name="description">Régularisation en faveur du déclarant</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_020')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">True</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_033" model="account.tax">
+            <field name="name">Prestations de Sous-Traitance 6%</field>
+            <field name="code">PST6</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">6</field>
+            <field name="description">PST6</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021'), ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_035" model="account.tax">
+            <field name="name">Prestations de Sous-Traitance</field>
+            <field name="code">PST</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">100</field>
+            <field name="description">PST</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021'), ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_036" model="account.tax">
+            <field name="name">Prestations de Sous-Traitance 21%</field>
+            <field name="code">PST21</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">21</field>
+            <field name="description">PST21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021'), ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_037" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier - Autoliq.1</field>
+            <field name="code">STI Autoliq.1</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">100</field>
+            <field name="description">STI</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_019')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_038" model="account.tax">
+            <field name="name">Biens et Services divers déductibles</field>
+            <field name="code">BS</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">100</field>
+            <field name="description">BS</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021'), ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_040" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier 6% - Autoliq.1</field>
+            <field name="code">STI6 Autoliq.1</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">6</field>
+            <field name="description">STI6</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_019')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_041" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier 12% - Autoliq.1</field>
+            <field name="code">STI12 Autoliq.1</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">12</field>
+            <field name="description">STI12</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_019')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_044" model="account.tax">
+            <field name="name">Ventes 21%</field>
+            <field name="code">21</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">21</field>
+            <field name="description">21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_003'), ref('vat_report_eze.account_account_tag_eezee_013'), ref('vat_report_eze.account_account_tag_eezee_014'), ref('vat_report_eze.account_account_tag_eezee_022')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_045" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier 21% - Autoliq.1</field>
+            <field name="code">STI21 Autoliq.1</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">21</field>
+            <field name="description">STI21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_019')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_046" model="account.tax">
+            <field name="name">Report Serv. taxes dues/le preneur (BS) - Autoliq.1</field>
+            <field name="code">RSB21 Autoliq.1</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">21</field>
+            <field name="description">RSB21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_019')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_047" model="account.tax">
+            <field name="name">EEC Services divers déductibles 21% - Autoliq.1</field>
+            <field name="code">ES21 Autoliq.1</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">21</field>
+            <field name="description">ES21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_019')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_049" model="account.tax">
+            <field name="name">Report Serv. taxes dues/le preneur (BS) - Autoliq.2</field>
+            <field name="code">RSB21 Autoliq.2</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">-21</field>
+            <field name="description">RSB21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_016'), ref('vat_report_eze.account_account_tag_eezee_020')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_050" model="account.tax">
+            <field name="name">Autres eXemptions</field>
+            <field name="code">AX</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">AX</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_051" model="account.tax">
+            <field name="name">EEC Services divers déductibles 21% - Autoliq.2</field>
+            <field name="code">ES21 Autoliq.2</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">-21</field>
+            <field name="description">ES21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_015'), ref('vat_report_eze.account_account_tag_eezee_020')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_052" model="account.tax">
+            <field name="name">Prest. EEC NON exonéré  pays preneur</field>
+            <field name="code">EP</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">EP</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_004'), ref('vat_report_eze.account_account_tag_eezee_010')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_053" model="account.tax">
+            <field name="name">Biens et Services divers Part. déduct. 35% - partie déd.</field>
+            <field name="code">BSP21 35 - partie déd.</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">7.35</field>
+            <field name="description">BSP21 35</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_054" model="account.tax">
+            <field name="name">Biens et Services divers Part. déduct. 35% - partie n.d.</field>
+            <field name="code">BSP21 35 - partie n.d.</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">13.65</field>
+            <field name="description">BSP21 35</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_032')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_055" model="account.tax">
+            <field name="name">Biens et Services divers Part. déduct. 50% - partie déd.</field>
+            <field name="code">BSP21 50 - partie déd.</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">10.5</field>
+            <field name="description">BSP21 50</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_021')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_057" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier 12% - Autoliq.2</field>
+            <field name="code">STI12 Autoliq.2</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">-12</field>
+            <field name="description">STI12</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_016'), ref('vat_report_eze.account_account_tag_eezee_020')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_058" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier 21% - Autoliq.2</field>
+            <field name="code">STI21 Autoliq.2</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">-21</field>
+            <field name="description">STI21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_016'), ref('vat_report_eze.account_account_tag_eezee_020')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_013" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier 21%</field>
+            <field name="code">STI21</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">group</field>
+            <field name="amount">0</field>
+            <field name="description">STI21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027'), ref('vat_report_eze.account_account_tag_eezee_029')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_045'), ref('vat_report_eze.account_tax_eezee_058')])]"></field>
+        </record>
+
+        <record id="account_tax_eezee_016" model="account.tax">
+            <field name="name">Cocontractant immobilier déductible 6%</field>
+            <field name="code">C6</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">group</field>
+            <field name="amount">0</field>
+            <field name="description"></field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027'), ref('vat_report_eze.account_account_tag_eezee_029')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_015'), ref('vat_report_eze.account_tax_eezee_019')])]"></field>
+        </record>
+
+        <record id="account_tax_eezee_018" model="account.tax">
+            <field name="name">Biens et Services divers Part. déduct. 75%</field>
+            <field name="code">BSP21 75</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">group</field>
+            <field name="amount">0</field>
+            <field name="description"></field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_017'), ref('vat_report_eze.account_tax_eezee_028')])]"></field>
+        </record>
+
+        <record id="account_tax_eezee_020" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier</field>
+            <field name="code">STI</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">group</field>
+            <field name="amount">0</field>
+            <field name="description"></field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_009'), ref('vat_report_eze.account_account_tag_eezee_027'), ref('vat_report_eze.account_account_tag_eezee_029')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_009'), ref('vat_report_eze.account_tax_eezee_037')])]"></field>
+        </record>
+
+        <record id="account_tax_eezee_025" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier 6%</field>
+            <field name="code">STI6</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">group</field>
+            <field name="amount">0</field>
+            <field name="description"></field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027'), ref('vat_report_eze.account_account_tag_eezee_029')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_012'), ref('vat_report_eze.account_tax_eezee_040')])]"></field>
+        </record>
+
+        <record id="account_tax_eezee_032" model="account.tax">
+            <field name="name">Biens et Services divers Part. déduct. 50%</field>
+            <field name="code">BSP21 50</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">group</field>
+            <field name="amount">0</field>
+            <field name="description"></field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_003'), ref('vat_report_eze.account_tax_eezee_055')])]"></field>
+        </record>
+
+        <record id="account_tax_eezee_034" model="account.tax">
+            <field name="name">Report Serv. taxes dues/le preneur (BS)</field>
+            <field name="code">BSP21</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">group</field>
+            <field name="amount">0</field>
+            <field name="description"></field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027'), ref('vat_report_eze.account_account_tag_eezee_029')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_046'), ref('vat_report_eze.account_tax_eezee_049')])]"></field>
+        </record>
+
+        <record id="account_tax_eezee_043" model="account.tax">
+            <field name="name">Sous-Traitance Immobilier 12%</field>
+            <field name="code">STI12</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">group</field>
+            <field name="amount">0</field>
+            <field name="description"></field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_027'), ref('vat_report_eze.account_account_tag_eezee_029')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_041'), ref('vat_report_eze.account_tax_eezee_057')])]"></field>
+        </record>
+
+        <record id="account_tax_eezee_048" model="account.tax">
+            <field name="name">EEC Services divers déductibles 21%</field>
+            <field name="code">ES21</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">group</field>
+            <field name="amount">0</field>
+            <field name="description"></field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_026'), ref('vat_report_eze.account_account_tag_eezee_030')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_047'), ref('vat_report_eze.account_tax_eezee_051')])]"></field>
+        </record>
+
+        <record id="account_tax_eezee_056" model="account.tax">
+            <field name="name">Biens et Services divers Part. déduct. 35%</field>
+            <field name="code">BSP21 35</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">group</field>
+            <field name="amount">0</field>
+            <field name="description"></field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_024'), ref('vat_report_eze.account_account_tag_eezee_027')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_053'), ref('vat_report_eze.account_tax_eezee_054')])]"></field>
+        </record>
+
+        <record id="account_tax_eezee_060" model="account.tax">
+            <field name="name">EEC Sous-Traitance Transport/Consult. - Autoliq.1</field>
+            <field name="code">EST21 Autoliq.1</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">21</field>
+            <field name="description">EST21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_018'), ref('vat_report_eze.account_account_tag_eezee_019')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_061" model="account.tax">
+            <field name="name">EEC Sous-Traitance Transport/Consult. - Autoliq.2</field>
+            <field name="code">EST21 Autoliq.2</field>
+            <field name="type_tax_use">none</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">-21</field>
+            <field name="description">EST21</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_015'), ref('vat_report_eze.account_account_tag_eezee_020')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+
+        <record id="account_tax_eezee_062" model="account.tax">
+            <field name="name">EEC Sous-Traitance Transport/Consult.</field>
+            <field name="code">EST21</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount_type">group</field>
+            <field name="amount">0</field>
+            <field name="description"></field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_023'), ref('vat_report_eze.account_account_tag_eezee_026'), ref('vat_report_eze.account_account_tag_eezee_030')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_057'), ref('vat_report_eze.account_tax_eezee_058')])]"></field>
+        </record>
+
+        <record id="account_tax_eezee_063" model="account.tax">
+            <field name="name">Autres opérations de ventes exemptées</field>
+            <field name="code">VA</field>
+            <field name="type_tax_use">sale</field>
+            <field name="amount_type">percent</field>
+            <field name="amount">0</field>
+            <field name="description">VA</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="tag_ids" eval="[(6, 0, [ref('vat_report_eze.account_account_tag_eezee_009'), ref('vat_report_eze.account_account_tag_eezee_013')])]"></field>
+            <field name="analytic">False</field>
+            <field name="active">True</field>
+            <field name="price_include">False</field>
+            <field name="include_base_amount">False</field>
+            <field name="tax_adjustment">False</field>
+            <field name="children_tax_ids"></field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="l10n_be_reports.account_financial_report_l10n_be_tva0" model="account.financial.html.report">
+            <field name="name">Déclaration périodique à la TVA (std)</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id="account_financial_report_l10n_be_tva0_eezee" model="account.financial.html.report">
+            <field name="name">Déclaration périodique à la TVA (Eezee)</field>
+            <field name="tax_report">True</field>
+            <field name="date_range">True</field>
+            <field name="debit_credit">False</field>
+            <field name="parent_id" ref="l10n_be.account_reports_be_statements_menu"/>
+        </record>
+
+    </data>
+</odoo>

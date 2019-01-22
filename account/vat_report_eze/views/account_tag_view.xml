@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_account_tag_search" model="ir.ui.view">
+            <field name="name">account.account.tag.search</field>
+            <field name="model">account.account.tag</field>
+            <field name="arch" type="xml">
+                <search string="Tag">
+                    <filter string="Archived" domain="[('active','=',False)]" name='archived'/>
+                </search>
+            </field>
+        </record>
+
+        <record id="account.account_tag_action" model="ir.actions.act_window">
+            <field name="search_view_id" ref="view_account_account_tag_search"/>
+        </record>
+    </data>
+</odoo>

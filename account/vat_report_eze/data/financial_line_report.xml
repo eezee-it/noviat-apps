@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="account_financial_report_line_eezee_000" model="account.financial.html.report.line">
+            <field name="name">Opérations (eze)</field>
+            <field name="level">1</field>
+            <field name="sequence">1</field>
+            <field name="financial_report_id" ref="vat_report_eze.account_financial_report_l10n_be_tva0_eezee"/>
+            <field name="parent_id"></field>
+            <field name="domain"></field>
+            <field name="formulas"></field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">foldable</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_001" model="account.financial.html.report.line">
+            <field name="name">Taxes (eze)</field>
+            <field name="level">1</field>
+            <field name="sequence">2</field>
+            <field name="financial_report_id" ref="vat_report_eze.account_financial_report_l10n_be_tva0_eezee"/>
+            <field name="parent_id"></field>
+            <field name="domain"></field>
+            <field name="formulas"></field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">foldable</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_002" model="account.financial.html.report.line">
+            <field name="name">II A la sortie (eze)</field>
+            <field name="level">2</field>
+            <field name="sequence">1</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_000"/>
+            <field name="domain"></field>
+            <field name="formulas"></field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">foldable</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_003" model="account.financial.html.report.line">
+            <field name="name">III A l'entrée (eze)</field>
+            <field name="level">2</field>
+            <field name="sequence">2</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_000"/>
+            <field name="domain"></field>
+            <field name="formulas"></field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">foldable</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_004" model="account.financial.html.report.line">
+            <field name="name">IV Dues (eze)</field>
+            <field name="code">BETAXIVEZE</field>
+            <field name="level">2</field>
+            <field name="sequence">3</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_001"/>
+            <field name="domain"></field>
+            <field name="formulas">balance = BETAX54EZE.balance + BETAX55EZE.balance + BETAX56EZE.balance + BETAX61EZE.balance + BETAX63EZE.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">foldable</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_005" model="account.financial.html.report.line">
+            <field name="name">V Déductibles (eze)</field>
+            <field name="code">BETAXVEZE</field>
+            <field name="level">2</field>
+            <field name="sequence">4</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_001"/>
+            <field name="domain"></field>
+            <field name="formulas">balance = BETAX59_COPYEZE.balance + BETAX62_COPYEZE.balance + BETAX64_COPYEZE.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">foldable</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_006" model="account.financial.html.report.line">
+            <field name="name">VI Soldes (eze)</field>
+            <field name="level">2</field>
+            <field name="sequence">5</field>
+            <field name="financial_report_id"/>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_001"/>
+            <field name="domain"></field>
+            <field name="formulas"></field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">foldable</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_007" model="account.financial.html.report.line">
+            <field name="name">54 - TVA sur opérations des grilles [01], [02], [03] (eze)</field>
+            <field name="code">BETAX54EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">1</field>
+            <field name="financial_report_id"/>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_004"/>
+            <field name="domain" eval="['&amp;',('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_014')]),  ('credit', '>', 0)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_008" model="account.financial.html.report.line">
+            <field name="name">71 - Taxes dues à l'état (eze)</field>
+            <field name="code">BETAX71EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">1</field>
+            <field name="financial_report_id"/>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_006"/>
+            <field name="domain"></field>
+            <field name="formulas">balance = (BETAXIVEZE.balance > BETAXVEZE.balance) and (BETAXIVEZE.balance - BETAXVEZE.balance) or 0.0</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_009" model="account.financial.html.report.line">
+            <field name="name">00 - Opérations soumises à un régime particulier (eze)</field>
+            <field name="code">BETAX00EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">1</field>
+            <field name="financial_report_id"/>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_002"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_000')]), '|', '&amp;', ('invoice_id', '=', False), ('credit', '>', 0), ('invoice_id.type', '=', 'out_invoice')]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_010" model="account.financial.html.report.line">
+            <field name="name">81 - Marchandises, matières premières et auxiliaires (eze)</field>
+            <field name="code">BETAX81EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">1</field>
+            <field name="financial_report_id"/>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_003"/>
+            <field name="domain" eval="['|', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_023')]), ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_031')])]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_011" model="account.financial.html.report.line">
+            <field name="name">59 - TVA déductible (eze)</field>
+            <field name="code">BETAX59_COPYEZE</field>
+            <field name="level">3</field>
+            <field name="sequence">1</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_005"/>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_018')]), ('debit', '>', 0)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_012" model="account.financial.html.report.line">
+            <field name="name">01 - Opérations avec TVA à 6% (eze)</field>
+            <field name="code">BETAX01EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">2</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_002"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_001')]), '|', '&amp;', ('invoice_id', '=', False), ('credit', '>', 0), ('invoice_id.type', '=', 'out_invoice')]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_013" model="account.financial.html.report.line">
+            <field name="name">62 - Diverses régularisations en faveur du déclarant (eze)</field>
+            <field name="code">BETAX62_COPYEZE</field>
+            <field name="level">3</field>
+            <field name="sequence">2</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_005"/>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_020')]), ('debit', '>', 0)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_014" model="account.financial.html.report.line">
+            <field name="name">55 - TVA sur opérations des grilles [86] et [88] (eze)</field>
+            <field name="code">BETAX55EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">2</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_004"/>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_015')]), ('credit', '>', 0)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_015" model="account.financial.html.report.line">
+            <field name="name">82 - Services et biens divers (eze)</field>
+            <field name="code">BETAX82EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">2</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_003"/>
+            <field name="domain" eval="['|', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_024')]), ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_032')])]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_016" model="account.financial.html.report.line">
+            <field name="name">83 - Biens d'investissement (eze)</field>
+            <field name="code">BETAX83EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">3</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_003"/>
+            <field name="domain" eval="['|', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_025')]), ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_033')])]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_017" model="account.financial.html.report.line">
+            <field name="name">56 - TVA sur opérations de la grille [87] (eze)</field>
+            <field name="code">BETAX56EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">3</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_004"/>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_016')]), ('credit', '>', 0)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_018" model="account.financial.html.report.line">
+            <field name="name">64 - TVA à recuperer sur notes de crédit delivrées (eze)</field>
+            <field name="code">BETAX64_COPYEZE</field>
+            <field name="level">3</field>
+            <field name="sequence">3</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_005"/>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_022')]), ('debit', '>', 0)]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_019" model="account.financial.html.report.line">
+            <field name="name">72 - Somme due par l'état (eze)</field>
+            <field name="code">BETAX72EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">3</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_006"/>
+            <field name="domain"></field>
+            <field name="formulas">balance = (BETAXVEZE.balance > BETAXIVEZE.balance) and (BETAXVEZE.balance - BETAXIVEZE.balance) or 0.0</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_020" model="account.financial.html.report.line">
+            <field name="name">02 - Opérations avec TVA à 12% (eze)</field>
+            <field name="code">BETAX02EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">3</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_002"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_002')]), '|', '&amp;', ('invoice_id', '=', False), ('credit', '>', 0), ('invoice_id.type', '=', 'out_invoice')]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_021" model="account.financial.html.report.line">
+            <field name="name">61 - Diverses régularisations en faveur de l'Etat (eze)</field>
+            <field name="code">BETAX61EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">4</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_004"/>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_019')]), ('credit', '>', 0)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_022" model="account.financial.html.report.line">
+            <field name="name">84 - Notes de crédits sur opérations case [86] et [88] (eze)</field>
+            <field name="code">BETAX84EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">4</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_003"/>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_026')]), ('credit', '>', 0)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_023" model="account.financial.html.report.line">
+            <field name="name">03 - Opérations avec TVA à 21% (eze)</field>
+            <field name="code">BETAX03EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">4</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_002"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_003')]), '|', '&amp;', ('invoice_id', '=', False), ('credit', '>', 0), ('invoice_id.type', '=', 'out_invoice')]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_024" model="account.financial.html.report.line">
+            <field name="name">44 - Services intra-communautaires (eze)</field>
+            <field name="code">BETAX44EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">5</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_002"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_004')]), '|', '&amp;', ('invoice_id', '=', False), ('credit', '>', 0), ('invoice_id.type', '=', 'out_invoice')]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_025" model="account.financial.html.report.line">
+            <field name="name">63 - TVA à reverser sur notes de crédit recues (eze)</field>
+            <field name="code">BETAX63EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">5</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_004"/>
+            <field name="domain" eval="['&amp;', ('tax_line_id.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_021')]), ('credit', '>', 0)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_026" model="account.financial.html.report.line">
+            <field name="name">85 - Notes de crédits autres opérations (eze)</field>
+            <field name="code">BETAX85EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">5</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_003"/>
+            <field name="domain" eval="['&amp;', ('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_027')]), ('credit', '>', 0)]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_027" model="account.financial.html.report.line">
+            <field name="name">46 - Livraisons intra-communautaire exemptées (eze)</field>
+            <field name="code">BETAX46EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">6</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_002"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_007')]), '|', '&amp;', ('invoice_id', '=', False), ('credit', '>', 0), ('invoice_id.type', '=', 'out_invoice')]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_028" model="account.financial.html.report.line">
+            <field name="name">86 - Acquisition intra-communautaires et ventes ABC (eze)</field>
+            <field name="code">BETAX86EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">6</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_003"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_028')])]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_029" model="account.financial.html.report.line">
+            <field name="name">47 - Autres opérations exemptées (eze)</field>
+            <field name="code">BETAX47EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">7</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_002"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_009')]), '|', '&amp;', ('invoice_id', '=', False), ('credit', '>', 0), ('invoice_id.type', '=', 'out_invoice')]"/>
+            <field name="formulas">balance = -sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_030" model="account.financial.html.report.line">
+            <field name="name">87 - Autres opérations (eze)</field>
+            <field name="code">BETAX87EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">7</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_003"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_029')])]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_031" model="account.financial.html.report.line">
+            <field name="name">48 - Notes de crédit aux opérations grilles [44] et [46] (eze)</field>
+            <field name="code">BETAX48EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">8</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_002"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_010')]), '|', '&amp;', ('invoice_id', '=', False), ('debit', '>', 0), ('invoice_id.type', '=', 'out_refund')]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_032" model="account.financial.html.report.line">
+            <field name="name">88 - Acquisition services intra-communautaires (eze)</field>
+            <field name="code">BETAX88EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">8</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_003"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_030')])]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+        <record id="account_financial_report_line_eezee_033" model="account.financial.html.report.line">
+            <field name="name">49 - Notes de crédit aux opérations du point II (eze)</field>
+            <field name="code">BETAX49EZE</field>
+            <field name="level">3</field>
+            <field name="sequence">9</field>
+            <field name="financial_report_id"></field>
+            <field name="parent_id" ref="vat_report_eze.account_financial_report_line_eezee_002"/>
+            <field name="domain" eval="[('tax_ids.tag_ids', 'in', [ref('vat_report_eze.account_account_tag_eezee_013')]), '|', '&amp;', ('invoice_id', '=', False), ('debit', '>', 0), ('invoice_id.type', '=', 'out_refund')]"/>
+            <field name="formulas">balance = sum.balance</field>
+            <field name="green_on_positive">True</field>
+            <field name="show_domain">never</field>
+            <field name="special_date_changer">strict_range</field>
+            <field name="figure_type">float</field>
+        </record>
+
+    </data>
+</odoo>
