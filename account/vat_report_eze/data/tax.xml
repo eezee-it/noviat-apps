@@ -1004,7 +1004,7 @@
             <field name="price_include">False</field>
             <field name="include_base_amount">False</field>
             <field name="tax_adjustment">False</field>
-            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_057'), ref('vat_report_eze.account_tax_eezee_058')])]"></field>
+            <field name="children_tax_ids" eval="[(6, 0, [ref('vat_report_eze.account_tax_eezee_060'), ref('vat_report_eze.account_tax_eezee_061')])]"></field>
         </record>
 
         <record id="account_tax_eezee_063" model="account.tax">
