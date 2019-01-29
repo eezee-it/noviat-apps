@@ -28,7 +28,7 @@
                 'account_accountant',
                 'l10n_be',
                 'account_tax_code',
-                'r, account_tax_constraints',
+                'account_tax_constraints',
                 'l10n_be_reports',
                 'account_reports'],
     'data': ['views/account_tag_view.xml',
