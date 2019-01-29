@@ -1,4 +1,0 @@
-[submodule "noviat_apps"]
-	path = noviat_apps
-	url = https://github.com/eezee-it/noviat-apps.git
-	branch = 11.0
